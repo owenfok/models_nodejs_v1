@@ -42,12 +42,25 @@ exports.reg = function(req, res){
 
 //執行Register
 exports.doReg = function(req, res){
-	if(req.body['password-repeat'] != req.body['password']){
-		console.log('Password輸入不一致。');
-		console.log('第一次輸入的Password：' + req.body['password']);
-		console.log('第二次輸入的Password：' + req.body['password-repeat']);
-		return res.redirect('/reg');
-	}
+	const { password, password_repeat } = req.body;
+    let errors = [];
+    // Check password
+    if (password !== password_repeat) {
+        errors.push({ msg: 'Passwords do not match' });
+    }
+    // Check password length
+    if (password.length < 6) {
+        errors.push({ msg: 'Password should be at least 6 characters' });
+    }
+    if (errors.length > 0) {
+        return res.render('reg', {
+			title : 'Register',
+			loginStatus : isLogin,			
+            errors,
+            password,
+            password_repeat
+        });
+    }
 	else{
 		//register success, redirect to index
 		res.cookie('userid', req.body['username'], { path: '/', signed: true});		
@@ -67,10 +80,10 @@ exports.login = function(req, res){
 
 //執行Login
 exports.doLogin = function(req, res){
-	if(req.body['password-repeat'] != req.body['password']){
+	if(req.body['password_repeat'] != req.body['password']){
 		console.log('Password輸入不一致。');
 		console.log('第一次輸入的Password：' + req.body['password']);
-		console.log('第二次輸入的Password：' + req.body['password-repeat']);
+		console.log('第二次輸入的Password：' + req.body['password_repeat']);
 		return res.redirect('/reg');
 	}
 	else{

@@ -15,10 +15,15 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="password-repeat">Password Repeat</label>
+			<label class="control-label" for="password_repeat">Password Repeat</label>
 			<div class="controls">
-				<input type="password" class="input-xlarge" id="password-repeat" name="password-repeat">
+				<input type="password" class="input-xlarge" id="password_repeat" name="password_repeat">
 			</div>
+			<% if(typeof errors != 'undefined'){ %> 
+				<% errors.forEach(function(error) { %>
+					<%-JSON.stringify({ err: error.msg})%>
+				<% }); %> 
+			<% } %>
 		</div>
 		<div class="form-actions">
 			<% function check(){ %>
