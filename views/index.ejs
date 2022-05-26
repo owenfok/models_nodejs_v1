@@ -1,16 +1,15 @@
 <% if (!loginStatus) { %>
 <div class="hero-unit">
-	<h1>歡迎來到 Microblog</h1>
-	<p>Microblog 是一個基於 Node.js 的微博系统。</p>
+	<h1>Welcome to Microblog</h1>
 	<p>
-		<a class="btn btn-primary btn-large" href="/login">登入</a>
-		<a class="btn btn-large" href="/reg">立即註冊</a>
+		<a class="btn btn-primary btn-large" href="/login">Login</a>
+		<a class="btn btn-large" href="/reg">立即Register</a>
 	</p>
 </div>
 <% } else { %>
 	<form method="post" action="/post" class="well form-inline center" style="text-align:center;">
 		<input type="text" class="span8" name="post">
-		<button type="submit" class="btn btn-success"><i class="icon-comment icon-white"></i>發言</button>
+		<button type="submit" class="btn btn-success"><i class="icon-comment icon-white"></i>Release</button>
 	</form>
 <% } %>
 <% posts.forEach(function(post, index) { 

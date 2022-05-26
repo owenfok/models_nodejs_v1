@@ -12,7 +12,7 @@ var postList = [
 ]; 
 var count = postList.length;
 
-//檢查使用者登入狀態
+//檢查User Login狀態
 var isLogin = false;
 var checkLoginStatus = function(req, res){
 	isLogin = false;
@@ -31,21 +31,21 @@ exports.index = function(req, res){
 	});	
 };
 
-//註冊頁面
+//Register頁面
 exports.reg = function(req, res){
 	checkLoginStatus(req, res);
 	res.render( 'reg', {
-		title : '註冊',
+		title : 'Register',
 		loginStatus : isLogin
 	});
 };
 
-//執行註冊
+//執行Register
 exports.doReg = function(req, res){
 	if(req.body['password-repeat'] != req.body['password']){
-		console.log('密碼輸入不一致。');
-		console.log('第一次輸入的密碼：' + req.body['password']);
-		console.log('第二次輸入的密碼：' + req.body['password-repeat']);
+		console.log('Password輸入不一致。');
+		console.log('第一次輸入的Password：' + req.body['password']);
+		console.log('第二次輸入的Password：' + req.body['password-repeat']);
 		return res.redirect('/reg');
 	}
 	else{
@@ -56,21 +56,21 @@ exports.doReg = function(req, res){
 	}
 };
 
-//登入頁面
+//Login頁面
 exports.login = function(req, res){
 	checkLoginStatus(req, res);
 	res.render( 'login', {
-		title : '登入',
+		title : 'Login',
 		loginStatus : isLogin
 	});
 };
 
-//執行登入
+//執行Login
 exports.doLogin = function(req, res){
 	if(req.body['password-repeat'] != req.body['password']){
-		console.log('密碼輸入不一致。');
-		console.log('第一次輸入的密碼：' + req.body['password']);
-		console.log('第二次輸入的密碼：' + req.body['password-repeat']);
+		console.log('Password輸入不一致。');
+		console.log('第一次輸入的Password：' + req.body['password']);
+		console.log('第二次輸入的Password：' + req.body['password-repeat']);
 		return res.redirect('/reg');
 	}
 	else{
@@ -96,7 +96,7 @@ exports.post = function(req, res){
 	return res.redirect('/');	
 };
 
-//使用者頁面
+//User 頁面
 exports.user = function(req, res){
 	var userName = req.params.user;
 	var userPosts = [];

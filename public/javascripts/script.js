@@ -39,6 +39,7 @@ SP.module = {
         });
     }
 };
+
 (function(){
     var doWhileExist = function(ModuleID,objFunction){
         var dTarget = document.getElementById(ModuleID);
