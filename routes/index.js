@@ -1,8 +1,4 @@
 ﻿//get home page
-//功能是調用模板解析引擎，並傳入一個對象作為參數，這個對象只有一個屬性，即 title: 'Express'。
-//index.ejs：index.ejs是模板文件，即路由/ index.js中調用的模板
-//layout.ejs模板文件不是孤立展示的，默認情況下所有的模板都繼承自layout.ejs，<%- body %>部分才是獨特的內容，其他部分是共有的，可以看作是頁面框架。
-//使用模板引擎：res.render，並將其產生的頁面直接返回给客户端
 
 //Mockup
 var postList = [
@@ -63,6 +59,7 @@ exports.doReg = function(req, res){
     }
 	else{
 		//register success, redirect to index
+
 		res.cookie('userid', req.body['username'], { path: '/', signed: true});		
 		res.cookie('password', req.body['password'], { path: '/', signed: true });
 		return res.redirect('/');
@@ -80,12 +77,25 @@ exports.login = function(req, res){
 
 //執行Login
 exports.doLogin = function(req, res){
-	if(req.body['password_repeat'] != req.body['password']){
-		console.log('Password輸入不一致。');
-		console.log('第一次輸入的Password：' + req.body['password']);
-		console.log('第二次輸入的Password：' + req.body['password_repeat']);
-		return res.redirect('/reg');
-	}
+	const { password, password_repeat } = req.body;
+    let errors = [];
+    // Check password
+    if (password !== password_repeat) {
+        errors.push({ msg: 'Passwords do not match' });
+    }
+    // Check password length
+    if (password.length < 6) {
+        errors.push({ msg: 'Password should be at least 6 characters' });
+    }
+    if (errors.length > 0) {
+        return res.render('login', {
+			title : 'Login',
+			loginStatus : isLogin,			
+            errors,
+            password,
+            password_repeat
+        });
+    }
 	else{
 		//register success, redirect to index
 		res.cookie('userid', req.body['username'], { path: '/', signed: true});		
