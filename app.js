@@ -3,8 +3,9 @@ var express = require('express'); //從local取得express
 var app = express();
 ////connect to mongodb
 var mongoose = require('mongoose');
-mongoose.connect("mongodb://admin:123456@localhost:27017/admin");
-
+mongoose.connect("mongodb://admin:123456@localhost:27017");
+// require Post model
+var Post = require('./models/post');
 
 
 var routes = require('./routes'); //等同於"./routes/index.js"，指定路徑返回內容，相當於MVC中的Controller
