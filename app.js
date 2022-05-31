@@ -1,21 +1,17 @@
 //module dependencies
 var express = require('express'); //從local取得express
+var app = express();
+
+var mongosoe
+
 var routes = require('./routes'); //等同於"./routes/index.js"，指定路徑返回內容，相當於MVC中的Controller
 var http = require('http');
 var path = require('path');
-var app = express();
+
 var partials = require('express-partials');
 
 /*
 app.set是express的參數設置工具，接受key-value，可用的參數如下：
-	- basepath：即Base Path，通常用於res.redirect()跳轉
-	- views：存放view的資料夾
-	- view engine：view engine類型
-	- view options：global view參數
-	- view cache：啟用view快取
-	- case sensitive routes：路徑區分大小寫
-	- strict routing：嚴格路徑，啟用後不會忽略路徑結尾的 "/"
-	- jsonp callback：開啟支援透明的JSONP
 */
 
 app.set('port', process.env.PORT || 3000);
@@ -62,8 +58,3 @@ http.createServer(app).listen(app.get('port'), function( req, res ){
 });
 
 
-/*
-建立一個HTTP的實例，在其請求處理函數中手動編寫REQ對象的事件監聽器。
-當客戶端數據到達時，將POST數據暫存在閉包的變量中，直到結束。
-事件觸發，解析POST請求，處理後返回客戶端。
-*/
