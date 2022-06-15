@@ -4,8 +4,11 @@ var app = express();
 ////connect to mongodb
 var mongoose = require('mongoose');
 mongoose.connect("mongodb://admin:123456@localhost:27017");
-// require Post model
+// require DB model
 var Post = require('./models/post');
+var User = require('./models/user');
+
+
 
 
 var routes = require('./routes'); //等同於"./routes/index.js"，指定路徑返回內容，相當於MVC中的Controller
@@ -21,6 +24,7 @@ app.set是express的參數設置工具，接受key-value，可用的參數如下
 app.set('port', process.env.PORT || 3000);
 
 app.set('views', path.join(__dirname, 'views'));//設計頁面模板位置，在views子目錄下
+//
 app.set('view engine', 'ejs');//表明要使用的模板引擎(樣板引擎，Template Engine)是ejs
 app.use(partials());
 app.use(express.favicon());
@@ -56,9 +60,8 @@ app.post('/login', routes.doLogin);
 // Logout
 app.get('/logout', routes.logout );
 
+
 http.createServer(app).listen(app.get('port'), function( req, res ){ 
 	//launch app instance
 	console.log('Express server listening on port ' + app.get('port'));
 });
-
-

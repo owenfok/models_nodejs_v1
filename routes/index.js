@@ -16,7 +16,6 @@ var checkLoginStatus = function(req, res){
 		isLogin = true;
 	}
 };
-
 //首頁
 exports.index = function(req, res){
 	checkLoginStatus(req, res);
@@ -26,7 +25,6 @@ exports.index = function(req, res){
 		posts : postList
 	});	
 };
-
 //Register頁面
 exports.reg = function(req, res){
 	checkLoginStatus(req, res);
@@ -35,7 +33,6 @@ exports.reg = function(req, res){
 		loginStatus : isLogin
 	});
 };
-
 //執行Register
 exports.doReg = function(req, res){
 	const { password, password_repeat } = req.body;
@@ -65,7 +62,6 @@ exports.doReg = function(req, res){
 		return res.redirect('/');
 	}
 };
-
 //Login頁面
 exports.login = function(req, res){
 	checkLoginStatus(req, res);
@@ -74,7 +70,6 @@ exports.login = function(req, res){
 		loginStatus : isLogin
 	});
 };
-
 //執行Login
 exports.doLogin = function(req, res){
 	const { password, password_repeat } = req.body;
@@ -103,7 +98,6 @@ exports.doLogin = function(req, res){
 		return res.redirect('/');
 	}
 };
-
 //執行登出
 exports.logout = function(req, res){
 	res.clearCookie('userid', { path: '/' });
