@@ -2,49 +2,49 @@
 <html>
 <head>
 <title><%= title %></title>
-<link href="/stylesheets/bootstrap.css" rel="stylesheet" />
-<link href="/stylesheets/bootstrap-responsive.css" rel="stylesheet">
-<link href="../assets/css/style.css" rel="stylesheet">
+<!-- <link href="/stylesheets/bootstrap.css" rel="stylesheet" />-->
+<!-- <link href="/stylesheets/bootstrap-responsive.css" rel="stylesheet">-->
+<!-- <link href="/css/style.css" rel="stylesheet">-->
 
  <!-- Vendor CSS Files -->
- <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
- <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
- <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
- <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+ <link href="/vendor/aos/aos.css" rel="stylesheet">
+ <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+ <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
  <!-- Template Main CSS File -->
-<link href="../assets/css/style.css" rel="stylesheet">
-
-<style>
-body{padding-top: 60px;padding-bottom: 40px;}
-.container{width:960px;margin:0 auto;}
-</style>
+<link href="/stylesheets/style.css" rel="stylesheet">
 
 </head>
 <body>
-<div class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="container">
-			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<a class="brand" href="/">Microblog</a>
-			<div class="nav-collapse">
-				<ul class="nav">
-					<li class="active"><a href="/">Home</a></li>
-					<% if (loginStatus) { %>
-						<li><a href="/logout">Logout</a></li>
-					<% } else{ %>
-						<li><a href="/login">Login</a></li>
-						<li><a href="/reg">Register</a></li>
-					<% } %>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
+<div class="collapse navbar-collapse custom-navmenu" id="main-navbar">
+    <div class="container py-2 py-md-5">
+      <div class="row align-items-start">
+        <div class="col-md-2">
+          <ul class="custom-menu">
+			<li class="active"><a href="/">Home</a></li>
+			<% if (loginStatus) { %>
+				<li><a href="/logout">Logout</a></li>
+			<% } else{ %>
+				<li><a href="/login">Login</a></li>
+				<li><a href="/reg">Register</a></li>
+			<% } %>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <nav class="navbar navbar-light custom-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="/">MyPortfolio.</a>
+      <a href="#" class="burger" data-bs-toggle="collapse" data-bs-target="#main-navbar">
+        <span></span>
+      </a>
+    </div>
+  </nav>
+
 
 <div id="container" class="container">
 	<%- body %>
@@ -52,7 +52,17 @@ body{padding-top: 60px;padding-bottom: 40px;}
 	<footer>
 	</footer>
 </div>
-<script src="/javascripts/jquery.js"></script>
-<script src="/javascripts/bootstrap.js"></script>
+
+<!--<script src="/javascripts/jquery.js"></script>-->
+<!-- <script src="/javascripts/bootstrap.js"></script>-->
+<script src="/vendor/aos/aos.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/js/main.js"></script>
+
 </body>
 </html>

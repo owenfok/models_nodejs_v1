@@ -132,3 +132,12 @@ exports.user = function(req, res){
 	});
 	
 };
+
+// contact page
+exports.contact = function(req, res){
+	checkLoginStatus(req, res);
+	res.render( 'contact', {
+		title : 'contact',
+		loginStatus : isLogin
+	});
+};
