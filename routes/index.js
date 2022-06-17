@@ -8,6 +8,7 @@ var postList = [
 ]; 
 var count = postList.length;
 
+
 //檢查User Login狀態
 var isLogin = false;
 var checkLoginStatus = function(req, res){
@@ -141,3 +142,5 @@ exports.contact = function(req, res){
 		loginStatus : isLogin
 	});
 };
+
+

@@ -1,4 +1,22 @@
-<form class="form-horizontal" method="post" action="">
+<form action="/api/users" method="POST" id="add_user">
+    <div class="new_user">
+        <div class="control-group">
+            <label for="password" class="control-label">Name</label>
+            <input type="hidden" name="id" value="">
+            <input type="text" name="username" value="" placeholder="Mark Stoenis">
+        </div>
+        <div class="control-group">
+            <label for="password" class="control-label">Email</label>
+            <input type="text" name="password" value="" >
+        </div>
+
+        <div class="control-group">
+            <button type="submit" class="btn text-dark update">Save</button>
+        </div>
+
+    </div>
+</form>
+<form class="form-horizontal" method="POST" id="add_user">
 	<fieldset>
 		<legend>Register</legend>
 		<div class="control-group">

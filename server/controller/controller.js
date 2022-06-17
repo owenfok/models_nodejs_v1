@@ -10,8 +10,8 @@ exports.create = (req,res)=>{
 
     // new user
     const user = new Userdb({
-        name : req.body.name,
-        email : req.body.email,
+        username : req.body.name,
+        password : req.body.email,
     })
 
     // save user in the database
