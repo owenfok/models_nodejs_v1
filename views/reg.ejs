@@ -1,21 +1,46 @@
-<form action="/api/users" method="POST" id="add_user">
+<form class="form-horizontal" action="/api/users" method="POST" id="add_user">
     <div class="new_user">
+		<legend>Register</legend>
         <div class="control-group">
-            <label for="password" class="control-label">Name</label>
-            <input type="hidden" name="id" value="">
-            <input type="text" name="username" value="" placeholder="Mark Stoenis">
-        </div>
+			<label class="control-label" for="username">User Name</label>
+            <div class="controls">
+				<input type="text" name="username" class="input-xlarge" id="username" name="username">
+				<p class="help-block">你的Account的Name，用於Login和顯示。</p>
+			</div>
+		</div>
         <div class="control-group">
-            <label for="password" class="control-label">Email</label>
-            <input type="text" name="password" value="" >
-        </div>
-
-        <div class="control-group">
-            <button type="submit" class="btn text-dark update">Save</button>
+			<label class="control-label" for="password">Password</label>
+			<div class="controls">
+				<input type="text" name="password" class="input-xlarge" id="password"  >
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="password_repeat">Password Repeat</label>
+			<div class="controls">
+				<input type="text" class="input-xlarge" id="password_repeat" name="password_repeat">
+			</div>
+			<% if(typeof errors != 'undefined'){ %> 
+				<% errors.forEach(function(error) { %>
+					<%-JSON.stringify({ err: error.msg})%>
+				<% }); %> 
+			<% } %>
+		</div>
+		<div class="form-actions">
+			<% function check(){ %>
+				<% if (loginStatus) { %>
+					<li><a href="/logout">登出</a></li>
+				<% } else{ %>
+					<li><a href="/login">Login</a></li>
+					<li><a href="/reg">Register</a></li>
+				<% } %>
+			<% } %>
+            <button type="submit" class="btn btn-primary">Register</button>
         </div>
 
     </div>
 </form>
+
+
 <form class="form-horizontal" method="POST" id="add_user">
 	<fieldset>
 		<legend>Register</legend>
@@ -55,4 +80,4 @@
 			<button type="submit" class="btn btn-primary">Register</button>
 		</div>
 	</fieldset>
-</form>
+</form> 
